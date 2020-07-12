@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+practice.ipynb
 # C extensions
 *.so
 
