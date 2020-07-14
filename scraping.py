@@ -4,10 +4,28 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as soup
 import pandas as pd
+import datetime as dt
 
-# Set the executable path and initialize the chrome browser in splinter
-executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-browser = Browser('chrome', **executable_path)
+def scrape_all():
+    #Initiate headless driver for deployment
+
+    # Set the executable path and initialize the chrome browser in splinter
+    executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
+    browser = Browser('chrome', **executable_path, headless= True)
+
+    news_title, news_paragraph = mars_news(browser)
+
+    # Run all scraping functions and store results in dictionary
+    data = {"news_title": news_title,
+            "news_paragraph": news_paragraph,
+            "featured_image": featured_image(browser),
+            "facts": mars_fact(),
+            "last_modified": dt.datetime.now()
+            }
+
+    # Stop webdriver and return data
+    browser.quit()
+    return data
 
 
 def mars_news(browser):
@@ -88,7 +106,6 @@ def mars_fact():
 
     return df.to_html()
 
-browser.quit()
 
 
 
