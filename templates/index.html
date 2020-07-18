@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title Mission to Mars></titleMission></title>
+    <title> Mission to Mars</title> 
     <link
      rel="stylesheet"
      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -45,6 +45,42 @@
                      <h4> Mars Facts </h4>
                      {{mars.facts | safe}}
                  </div>
+             </div>
+         </div>
+         <!-- Hemisphere Images-->
+         <div class= "row" id="Hemisphere-Images">
+             <h2> Hemisphere Enhanced Images</h2>
+             <div class = "col-md-3">
+                 <h5> Cerberus Hemisphere </h5>
+                 <img 
+                 src= "{{ mars.cerberus }}" 
+                 class= "img-responsive" 
+                 alt= "Responsive image">
+                </img>
+             </div>
+             <div class ="col-md-3"> 
+                 <h5> Schiaparelli Hemisphere</h5>
+                 <img 
+                 src= "{{ mars.schiaparelli}}" 
+                 class= "img-responsive" 
+                 alt= "Responsive image">
+                 </img>
+             </div>
+             <div class="col-md-3">
+                 <h5> Valles Marineris Hemisphere </h5>
+                <img 
+                src= "{{ mars.valles}}" 
+                class= "img-responsive" 
+                alt= "Responsive image">
+                </img>
+             </div>
+             <div class="col-md-3">
+                 <h5> Sytis Major Hemisphere </h5>
+                <img 
+                src= "{{ mars.syrtis}}" 
+                class= "img-responsive" 
+                alt= "Responsive image">
+             </img>
              </div>
          </div>
     </div>

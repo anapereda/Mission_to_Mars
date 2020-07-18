@@ -20,6 +20,10 @@ def scrape_all():
             "news_paragraph": news_paragraph,
             "featured_image": featured_image(browser),
             "facts": mars_fact(),
+            "cerberus": hemispheres_cerberus(browser),
+            "schiaparelli": hemispheres_schiaparelli(browser),
+            "syrtis": hemispheres_syrtis(browser),
+            "valles": hemispheres_valles(browser),
             "last_modified": dt.datetime.now()
             }
 
@@ -105,6 +109,125 @@ def mars_fact():
     df.set_index('description', inplace=True)
 
     return df.to_html()
+
+#hemisphere cerberus
+
+def hemispheres_cerberus(browser):
+   #Visit URL
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    # Find and click the full image button
+    more_info_elem = browser.links.find_by_partial_text('Cerberus Hemisphere Enhanced')
+    more_info_elem.click()
+
+    
+    # Parse the resulting html with soup; conver to html to obtain full size image
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    try:
+        # Find the relative image url
+        cerberus_url = img_soup.select_one('div.downloads a').get("href")
+
+
+    except BaseException:
+        return None
+
+    
+    return cerberus_url
+
+def hemispheres_schiaparelli(browser):
+   #Visit URL
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    # Find and click the full image button
+    more_info_elem = browser.links.find_by_partial_text('Schiaparelli Hemisphere Enhanced')
+    more_info_elem.click()
+
+    
+    # Parse the resulting html with soup; conver to html to obtain full size image
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    # Parse the resulting html with soup; conver to html to obtain full size image
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    try:
+        # Find the relative image url
+        schiaparelli_url = img_soup.select_one('div.downloads a').get("href")
+
+
+    except BaseException:
+        return None
+
+    
+    return schiaparelli_url
+
+def hemispheres_syrtis(browser):
+   #Visit URL
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    # Find and click the full image button
+    more_info_elem = browser.links.find_by_partial_text('Syrtis Major Hemisphere Enhanced')
+    more_info_elem.click()
+
+    
+    # Parse the resulting html with soup; conver to html to obtain full size image
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    # Parse the resulting html with soup; conver to html to obtain full size image
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    try:
+        # Find the relative image url
+        syrtis_url = img_soup.select_one('div.downloads a').get("href")
+
+
+    except BaseException:
+        return None
+
+    # Use the base URL to create an absolute URL
+    
+    
+    return syrtis_url
+
+def hemispheres_valles(browser):
+   #Visit URL
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(url)
+
+    # Find and click the full image button
+    more_info_elem = browser.links.find_by_partial_text('Valles Marineris Hemisphere Enhanced')
+    more_info_elem.click()
+
+    
+    # Parse the resulting html with soup; conver to html to obtain full size image
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    # Parse the resulting html with soup; conver to html to obtain full size image
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    try:
+        # Find the relative image url
+        valles_url = img_soup.select_one('div.downloads a').get("href")
+
+
+    except BaseException:
+        return None
+
+    
+    return valles_url
+
+
+
 
 
 
